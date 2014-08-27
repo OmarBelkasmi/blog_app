@@ -1,5 +1,22 @@
 source 'https://rubygems.org'
 
+platforms :ruby do # linux
+  gem 'unicorn'
+end
+
+platforms :mswin do
+  # gems specific to windows
+end
+
+platforms :ruby do # linux
+  gem 'kgio'
+end
+
+platforms :mswin do
+  # gems specific to windows
+end
+
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'
@@ -26,9 +43,6 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-# Use unicorn as the app server
-# gem 'unicorn'
-
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -37,3 +51,17 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
+
+# Use PostgreSQL
+gem 'pg', group: :production
+
+group :development do
+  # Use Capistrano for deployment
+  gem 'capistrano', '~> 3.1'
+  gem 'capistrano-rails', '~> 1.1.1'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rbenv', '~> 2.0'
+  gem 'capistrano-unicorn-nginx', '~> 2.0'
+  gem 'capistrano-postgresql', '~> 3.0' 
+end
+
